@@ -1,0 +1,7 @@
+const header = document.querySelector("header");
+const nav = document.querySelector("nav");
+
+
+header.innerHTML = '<div class="contenedor__logo"> <img src="logo.png" alt=""></div><div class="title__inicio"><p>Sistemas de Gestion de Inventario</p></div><div class="contenedor__perfil"><div class="icon__notifi"><p><i class="fa-regular fa-bell"></i></p></div><div class="linea"></div><div class="profile"><div class="name_profile"><p><span>Hola:</span> Jefe de market</p><p>Administrador</p></div><div class="img_perfil"><i class="fa-solid fa-user"></i></div></div></div>';
+
+nav.innerHTML = '<div class="contenedor__navbar"><div class="accesoUser"><ul><li><i class="fa-solid fa-gauge"></i><a href="/index">Inicio</a></li><li><i class="fa-solid fa-cart-shopping"></i><a href="/nuenvaVenta">Venta nueva</a></li><li><i class="fa-solid fa-arrow-trend-up"></i><a href="/stock">Stock</a></li><li><i class="fa-solid fa-basket-shopping"></i><a href="/pedidos">Pedidos</a></li></ul></div><div class="accesoAdmin"><p>Mantenimiento: </p><ul><li><i class="fa-solid fa-chart-line"></i><a href="/dashboard">DashBoard</a></li><li><i class="fa-solid fa-truck-field-un"></i><a href="/proveedores">Proveedores</a></li><li><i class="fa-solid fa-layer-group"></i><a href="/categoria">Categorias</a></li><li><i class="fa-brands fa-product-hunt"></i><a href="/productos">Productos</a></li><li><i class="fa-solid fa-users"></i><a href="/usuarios">Usuario</a></li></ul></div></div>';

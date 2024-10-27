@@ -1,0 +1,14 @@
+.contenedor_modal{
+    border: 1px solid rgba(173, 173, 173, 0.467);
+    border-radius: 5px;
+    border-top: 3px solid #0078ff;
+    padding-bottom: 10px;
+}
+.title__add--modal{
+    padding: 20px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.467);
+}
+
+.title__add--modal p{
+    font-weight: 600;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores | Multiservicios Leo</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-modal.css">
+    <link rel="stylesheet" href="ventana-modal.css">
+</head>
+<style>
+    #table, #table tr th, #table tr td{
+    border: 1px solid rgba(173, 173, 173, 0.467);
+}
+</style>
+<body>
+    <header class="header"></header>
+    <nav class="navbar"></nav>
+    <main class="contenedor_main">
+        <div class="contenedor_modal">
+            <div class="title__add--modal">
+                <p>Ordenes de Pedidos</p>
+                <button class="addition">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Nuevo</p>
+                </button>
+            </div>
+            <div class="Cont__buscar">
+                <div class="buscar_search">
+                    <label for="">Buscar :</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="cont_table">
+                <div class="table__product">
+                    <table id="table" class="table">
+                        <tr class="thead">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Accion</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Chips</td>
+                            <td>Ica</td>
+                            <td>999999999</td>
+                            <td>example@gmail.com</td>
+                            <td>
+                                <div class="container_action">
+                                    <input id="open_action" type="checkbox" class="action_checkbox">
+                                    <label class="name_action" for="open_action">Accion <i class="fa-solid fa-caret-down" id="vuelta"></i></label>
+                                    <div class="cont_opciones">
+                                        <button>Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button>Eliminar <i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="general.js"></script>
+</body>
+</html>
