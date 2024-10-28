@@ -167,7 +167,7 @@
                             <td th:text="${producto.stock}">200</td>
                             <td>
                                 <div class="container_action">
-                                    <input id="open_action" type="checkbox" class="action_checkbox">
+                                    <label type="checkbox" class="action_checkbox">
                                     <label class="name_action" for="open_action">Accion <i
                                             class="fa-solid fa-caret-down" id="vuelta"></i></label>
                                     <div class="cont_opciones">
@@ -198,6 +198,9 @@
                                     document.getElementById("descripcion_act").value = valores[4];
                                     document.getElementById("precio_act").value = valores[5];
                                     document.getElementById("stock_act").value = valores[6];
+                                    modalContEdit.style.opacity = "1";
+                                    modalContEdit.style.visibility = "visible";
+                                    VentEdit.classList.toggle("ventana-close-edit");
                                 });
                             });
                             
@@ -213,6 +216,9 @@
         
                                     // Mostramos los valores recogidos
                                     document.getElementById("id_eliminar").value = valores[0];
+                                    modalContDele.style.opacity = "1";
+                                    modalContDele.style.visibility = "visible";
+                                    VentDelete.classList.toggle("ventana-close-delete");
                                 });
                             });
 

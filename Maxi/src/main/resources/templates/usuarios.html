@@ -136,7 +136,7 @@
                             <td th:text="${usuario.rol}">Admin</td>
                             <td>
                                 <div class="container_action">
-                                    <input id="open_action" type="checkbox" class="action_checkbox">
+                                    <label  type="checkbox" class="action_checkbox">
                                     <label class="name_action" for="open_action">Accion <i class="fa-solid fa-caret-down" id="vuelta"></i></label>
                                     <div class="cont_opciones">
                                         <button class="editproduc">Editar <i class="fa-solid fa-pen-to-square"></i></button>
@@ -163,6 +163,9 @@
                                     document.getElementById("email_act").value = valores[2];
                                     document.getElementById("contraseña_act").value = valores[3];
                                     document.getElementById("rol_act").value = valores[4];
+                                    modalContEdit.style.opacity = "1";
+                                    modalContEdit.style.visibility = "visible";
+                                    VentEdit.classList.toggle("ventana-close-edit");
                                 });
                             });
                             
@@ -178,6 +181,9 @@
         
                                     // Mostramos los valores recogidos
                                     document.getElementById("id_eliminar").value = valores[0];
+                                    modalContDele.style.opacity = "1";
+                                    modalContDele.style.visibility = "visible";
+                                    VentDelete.classList.toggle("ventana-close-delete");
                                 });
                             });
 

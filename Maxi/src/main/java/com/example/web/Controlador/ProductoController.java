@@ -36,7 +36,7 @@ public class ProductoController {
         model.addAttribute("categorias", productoService.obtenerCategorias());
         model.addAttribute("productos", productoService.obtenerProductos());
         model.addAttribute("proveedores", productoService.obtenerProveedores());
-        return "productos";
+        return "redirect:/productos";
     }
 
     @PostMapping("/actualizar_prod")
@@ -55,7 +55,7 @@ public class ProductoController {
         model.addAttribute("categorias", productoService.obtenerCategorias());
         model.addAttribute("productos", productoService.obtenerProductos());
         model.addAttribute("proveedores", productoService.obtenerProveedores());
-        return "productos";
+        return "redirect:/productos";
     }
 
     @PostMapping("/eliminar_prod")
@@ -68,7 +68,7 @@ public class ProductoController {
         model.addAttribute("categorias", productoService.obtenerCategorias());
         model.addAttribute("productos", productoService.obtenerProductos());
         model.addAttribute("proveedores", productoService.obtenerProveedores());
-        return "productos";
+        return "redirect:/productos";
 
     }
 }

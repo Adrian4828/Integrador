@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="ventana-modal.css">
     <link rel="stylesheet" href="style-modal-delete.css">
 </head>
+
 <body>
 
     <div class="modal__container--add">
@@ -29,7 +31,7 @@
                     <label for="">Descripcion</label><br>
                     <input name="descripcion" type="text">
                 </div>
-                
+
                 <div class="button__modal">
                     <div class="btn-modal">
                         <input type="submit" class="btn-guardar" value="Guardar">
@@ -54,7 +56,7 @@
                     <label for="">Descripcion</label><br>
                     <input type="text" name="descripcion_act" id="descripcion_cat">
                 </div>
-                
+
                 <div class="button__modal">
                     <div class="btn-modal">
                         <input type="submit" class="btn-guardar" value="Guardar">
@@ -118,65 +120,77 @@
                             <td th:text="${categoria.descripcion}" id="descripcion_cat">kenn</td>
                             <td>
                                 <div class="container_action">
-                                    <input id="open_action" type="checkbox" class="action_checkbox">
-                                    <label class="name_action" for="open_action">Accion <i class="fa-solid fa-caret-down" id="vuelta"></i></label>
+                                    <label type="checkbox" class="action_checkbox">
+                                    <label class="name_action">Accion <i class="fa-solid fa-caret-down"
+                                            id="vuelta"></i></label>
                                     <div class="cont_opciones">
-                                        <button class="editproduc">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button class="deleteProduc">Eliminar <i class="fa-solid fa-trash-can"></i></button>
+                                        <button class="editproduc">Editar <i
+                                                class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="deleteProduc">Eliminar <i
+                                                class="fa-solid fa-trash-can"></i></button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
 
                         <script>
+
+
                             const boton2 = document.querySelectorAll(".editproduc");
                             boton2.forEach(boton => {
                                 boton.addEventListener('click', function () {
                                     // Encontramos la fila asociada al botón
                                     const fila = this.closest('tr');
-        
+
                                     // Recogemos los valores de las celdas de la fila
                                     const valores = Array.from(fila.querySelectorAll('td')).map(td => td.textContent);
-        
+
                                     // Mostramos los valores recogidos
                                     document.getElementById("id_act").value = valores[0];
                                     document.getElementById("nombre_cat").value = valores[1];
                                     document.getElementById("descripcion_cat").value = valores[2];
+                                    modalContEdit.style.opacity = "1";
+                                    modalContEdit.style.visibility = "visible";
+                                    VentEdit.classList.toggle("ventana-close-edit");
                                 });
                             });
-                            
-                            
+
+
                             const boton3 = document.querySelectorAll(".deleteProduc");
                             boton3.forEach(boton => {
                                 boton.addEventListener('click', function () {
                                     // Encontramos la fila asociada al botón
                                     const fila = this.closest('tr');
-        
+
                                     // Recogemos los valores de las celdas de la fila
                                     const valores = Array.from(fila.querySelectorAll('td')).map(td => td.textContent);
-        
+
                                     // Mostramos los valores recogidos
                                     document.getElementById("id_eliminar").value = valores[0];
+                                    modalContDele.style.opacity = "1";
+                                    modalContDele.style.visibility = "visible";
+                                    VentDelete.classList.toggle("ventana-close-delete");
                                 });
                             });
 
                             const boton4 = document.querySelectorAll(".button-confir");
                             boton4.forEach(boton => {
                                 boton.addEventListener('click', function () {
-                                    document.getElementById('eliminar_prod').submit();
+                                    document.getElementById('eliminar_cat').submit();
                                 });
                             });
-                           
+
                         </script>
-                        
+
                     </table>
                 </div>
             </div>
         </div>
     </main>
-    
+
 
     <script src="modalAdd.js"></script>
     <script src="general.js"></script>
 </body>
+
 </html>

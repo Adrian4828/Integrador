@@ -32,7 +32,7 @@ public class ProveedorController {
 
         model.addAttribute("proveedores", proveedoresService.obtenerProveedores());
 
-        return "proveedores";
+        return "redirect:/proveedores";
     }
 
     @PostMapping("/actualizar_prov")
@@ -48,7 +48,7 @@ public class ProveedorController {
 
         model.addAttribute("proveedores", proveedoresService.obtenerProveedores());
 
-        return "proveedores";
+        return "redirect:/proveedores";
     }
 
     @PostMapping("/eliminar_prov")
@@ -60,7 +60,7 @@ public class ProveedorController {
 
         model.addAttribute("proveedores", proveedoresService.obtenerProveedores());
 
-        return "proveedores";
+        return "redirect:/proveedores";
 
     }
 }

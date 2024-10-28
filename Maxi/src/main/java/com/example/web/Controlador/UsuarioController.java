@@ -34,7 +34,7 @@ public class UsuarioController {
 
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
 
-        return "usuarios";
+        return "redirect:/usuarios";
     }
 
     @PostMapping("/actualizar_usu")
@@ -50,7 +50,7 @@ public class UsuarioController {
 
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
 
-        return "usuarios";
+        return "redirect:/usuarios";
     }
 
     @PostMapping("/eliminar_usu")
@@ -62,7 +62,7 @@ public class UsuarioController {
 
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
 
-        return "usuarios";
+        return "redirect:/usuarios";
 
     }
 }

@@ -117,15 +117,12 @@
 }
 
 
-#open_action{
+.action_checkbox{
     padding: 0;
     margin: 0;
-    display: none;
 }
 
-#open_action:checked ~ .cont_opciones{
-    display: flex;
-}
+
 
 .fa-pen-to-square{
     color: #00F;

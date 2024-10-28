@@ -53,10 +53,6 @@
             <form class="form_modal" action="/actualizar_prov" method="post">
                 <input type="text" name="id_act" id="id_act" style="display: none;">
                 <div class="input__box">
-                    <label for="">Ruc</label><br>
-                    <input type="text">
-                </div>
-                <div class="input__box">
                     <label for="">Nombre</label><br>
                     <input type="text" name="nombre_act" id="nombre_act">
                 </div>
@@ -139,7 +135,7 @@
                             <td th:text="${proveedor.email}">example@gmail.com</td>
                             <td>
                                 <div class="container_action">
-                                    <input id="open_action" type="checkbox" class="action_checkbox">
+                                    <label  type="checkbox" class="action_checkbox">
                                     <label class="name_action" for="open_action">Accion <i class="fa-solid fa-caret-down" id="vuelta"></i></label>
                                     <div class="cont_opciones">
                                         <button class="editproduc" >Editar <i class="fa-solid fa-pen-to-square"></i></button>
@@ -164,6 +160,9 @@
                                     document.getElementById("direccion_act").value = valores[2];
                                     document.getElementById("telefono_act").value = valores[3];
                                     document.getElementById("email_act").value = valores[4];
+                                    modalContEdit.style.opacity = "1";
+                                    modalContEdit.style.visibility = "visible";
+                                    VentEdit.classList.toggle("ventana-close-edit");
                                 });
                             });
                             
@@ -179,6 +178,9 @@
         
                                     // Mostramos los valores recogidos
                                     document.getElementById("id_eliminar").value = valores[0];
+                                    modalContDele.style.opacity = "1";
+                                    modalContDele.style.visibility = "visible";
+                                    VentDelete.classList.toggle("ventana-close-delete");
                                 });
                             });
 

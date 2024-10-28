@@ -37,16 +37,10 @@ window.addEventListener("click", function (e) {
 
 
 let cerrardel = document.querySelectorAll(".button-cancelar")[0];
-let abrirDelete = document.querySelectorAll(".deleteProduc")[0];
 let VentDelete = document.querySelectorAll(".ventana_modal--delete")[0];
 let modalContDele = document.querySelectorAll(".container_modal--delete")[0];
 
-abrirDelete.addEventListener("click", function (e) {
-    e.preventDefault();
-    modalContDele.style.opacity = "1";
-    modalContDele.style.visibility = "visible";
-    VentDelete.classList.toggle("ventana-close-delete");
-});
+
 
 cerrardel.addEventListener("click", function (e) {
     VentDelete.classList.toggle("ventana-close-delete");
@@ -71,16 +65,8 @@ window.addEventListener("click", function (e) {
 /*  */
 
 let cerrarEdit = document.querySelectorAll(".btn-cancelar-edit")[0];
-let abrirEdit = document.querySelectorAll(".editproduc")[0];
 let VentEdit = document.querySelectorAll(".ventana_modal--edit")[0];
 let modalContEdit = document.querySelectorAll(".container-modal--edit")[0];
-
-abrirEdit.addEventListener("click", function (e) {
-    e.preventDefault();
-    modalContEdit.style.opacity = "1";
-    modalContEdit.style.visibility = "visible";
-    VentEdit.classList.toggle("ventana-close-edit");
-});
 
 cerrarEdit.addEventListener("click", function (e) {
     VentEdit.classList.toggle("ventana-close-edit");
@@ -99,5 +85,22 @@ window.addEventListener("click", function (e) {
             modalContEdit.style.visibility = "hidden";
         }, 600);
     }
+});
+
+let abrirOpciones = document.querySelectorAll(".action_checkbox");
+document.querySelectorAll(".container_action").forEach(actionContainer => {
+    const label = actionContainer.querySelector(".action_checkbox");
+    const optionsContainer = actionContainer.querySelector(".cont_opciones");
+
+    // Toggle display for options container on label click
+    label.addEventListener("click", () => {
+        const isVisible = optionsContainer.style.display === "flex";
+        // Hide any other open options
+        document.querySelectorAll(".cont_opciones").forEach(container => {
+            container.style.display = "none";
+        });
+        // Toggle current options container
+        optionsContainer.style.display = isVisible ? "none" : "flex";
+    });
 });
 

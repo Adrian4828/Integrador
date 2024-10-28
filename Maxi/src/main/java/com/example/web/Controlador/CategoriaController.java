@@ -28,7 +28,7 @@ public class CategoriaController {
             Model model) {
         categoriaService.agregarCategoria(nombre, descripcion);
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "categoria";
+        return "redirect:/categoria";
     }
 
     @PostMapping("/actualizar_cat")
@@ -38,7 +38,7 @@ public class CategoriaController {
             Model model) {
         categoriaRepositorio.actualizarCat(nombre, descripcion, id);
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "categoria";
+        return "redirect:/categoria";
     }
 
     @PostMapping("/eliminar_cat")
@@ -46,6 +46,6 @@ public class CategoriaController {
             Model model) {
         categoriaService.eliminarCategoria(id_categoria);
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "categorias";
+        return "redirect:/categoria";
     }
 }
