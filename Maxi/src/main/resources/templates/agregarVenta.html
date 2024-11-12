@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedores | Multiservicios Leo</title>
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="../IMG/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-agregarVenta.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../ESTILOS/style-agregarVenta.css">
 </head>
+
 <body>
     <header class="header"></header>
     <nav class="navbar"></nav>
@@ -21,19 +23,68 @@
             </div>
             <div class="contenedor__form--venta">
                 <form action="">
-                    <div class="cont_cod-nom">
+                    <div class="cont_cod-user">
                         <div class="cont-cod">
                             <label for="">Codigo</label><br>
                             <input type="text" disabled>
                         </div>
-                        <div class="cont-nom">
-                            <label for=""></label>
+                        <div class="cont-user">
+                            <label for="">Usuario</label><br>
+                            <input type="text">
                         </div>
+                    </div>
+                    <div class="info-produc-venta">
+                        <p>Informacion de la venta</p>
+
+                        <div class="listar">
+                            <div class="list-produc">
+                                <label for="">Producto</label><br>
+                                <select name="" id="">
+                                    <option disabled selected class="place-produc" value="">Seleccione aqui</option>
+                                </select>
+                            </div>
+                            <div class="cantidad-produc">
+                                <label for="">Cantidad</label><br>
+                                <input type="number">
+                            </div>
+                            <div class="btn-agregar-list">
+                                <button onclick="addProduct()">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont-table-list">
+                        <table id="tabla-listar" class="table-list">
+                            <thead>
+                                <tr>
+                                    <th>Quitar</th>
+                                    <th>Cantidad</th>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>X</td>
+                                    <td>asddfasdf</td>
+                                    <td>adsfd</td>
+                                    <td>sadfds</td>
+                                    <td>dfdfsf</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4"><p>Monto Total</p></td>
+                                    <td id="finalTotal">S/.0.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    <script src="general.js"></script>
+    <script src="../JS/general.js"></script>
 </body>
+
 </html>

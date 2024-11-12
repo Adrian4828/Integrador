@@ -1,3 +1,7 @@
+input{
+    box-sizing: border-box;
+}
+
 .contenedor_modal{
     border: 1px solid rgba(173, 173, 173, 0.467);
     border-radius: 5px;
@@ -11,4 +15,101 @@
 
 .title__add--modal p{
     font-weight: 600;
+}
+
+.contenedor__form--venta{
+    padding: 20px;
+}
+
+.contenedor__form--venta form{
+    box-sizing: border-box;
+}
+
+.cont_cod-user{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.467);
+}
+.cont_cod-user label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #4285d1;
+}
+
+.cont_cod-user div{
+    width: 50%;
+}
+
+.cont_cod-user input{
+    width: 100%;
+    padding: 3px;
+    margin-top: 10px;
+}
+
+.info-produc-venta{
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.467);
+}
+
+.info-produc-venta p{
+    color: #4285d1;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table-list{
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 0;
+}
+th {
+    background-color: #141938;
+    color: #fff;
+}
+
+.listar{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.listar label{
+    font-size: 14px;
+    font-weight: bold;
+}
+.listar div{
+    width: 100%;
+    max-width: 200px;
+}
+
+.listar input, .listar select{
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid rgba(173, 173, 173, 0.467);
+}
+
+.listar input:focus-visible, .listar select:focus-visible{
+    outline: 2px solid #3391fc;
+}
+
+.btn-agregar-list{
+    text-align: center;
+}
+.btn-agregar-list button{
+    padding: 10px 30px;
+    background-color: #0078ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
 }
