@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import lombok.Data;
-import java.sql.Date;
 
 
 @Data
@@ -25,10 +24,7 @@ public class Detalle_pedido implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_detalle_pedido")
-    private int idDetallePedido;
-    
-    @Column(name = "n_cantidad")
-    private int cantidad;
+    private int idDetalle;
 
     @Column(name = "c_pedido")
     private int idPedido;
@@ -36,20 +32,7 @@ public class Detalle_pedido implements Serializable{
     @Column(name = "c_producto")
     private int idProducto;
 
-    @Column(name = "n_precio_unidad")
-    private double precio;
-
-    @Column(name = "n_monto_total")
-    private double monto_total;
-
-    @Column(name = "f_solicitud")
-    private Date fechaSolicitud;
-
-    @Column(name = "f_recepcion")
-    private Date fechaRecepcion;
-
-    
- 
-    
+    @Column(name = "n_cantidad")
+    private int cantidad;
     
 }

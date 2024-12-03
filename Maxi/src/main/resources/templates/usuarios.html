@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios | Multiservicios Leo</title>
-    <link rel="icon" href="logo.png">
+    <link rel="icon" th:href="@{/images/logo.png}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-modal.css">
-    <link rel="stylesheet" href="ventana-modal.css">
-    <link rel="stylesheet" href="style-modal-delete.css">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/style-modal.css}">
+        <link rel="stylesheet" th:href="@{/css/ventana-modal.css}">
+    <link rel="stylesheet" th:href="@{/css/style-modal-delete.css}">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
             <div class="form__name--add">
                 <p><i class="fa-solid fa-plus"></i> Agregar Nuevo Usuario</p>
             </div>
-            <form id="formulario" class="form_modal" action="/agregar_usu" method="post">
+            <form id="formulario" class="form_modal" th:action="@{/agregar_usu}" method="post">
                 <div class="input__box">
                     <label for="">Nombre</label><br>
                     <input type="text" id="nombre" name="nombre">
@@ -51,7 +51,7 @@
             <div class="form__name--add">
                 <p><i class="fa-solid fa-plus"></i> Editar Usuario</p>
             </div>
-            <form id="formulario" class="form_modal" action="/actualizar_usu" method="post">
+            <form id="formulario" class="form_modal" th:action="@{/actualizar_usu}" method="post">
                 <input type="text" name="id_act" id="id_act" style="display: none;">
                 <div class="input__box">
                     <label for="">Nombre</label><br>
@@ -95,14 +95,14 @@
         </div>
     </div>
 
-    <form action="/eliminar_usu" id="eliminar_usu" style="display: none;" method="post">
+    <form th:action="@{/eliminar_usu}" id="eliminar_usu" style="display: none;" method="post">
         <input type="text" id="id_eliminar" name="id_eliminar" required>
         <input type="submit">
     </form>
 
 
-    <header class="header"></header>
-    <nav class="navbar"></nav>
+    <header class="header" th:insert="header.html"></header>
+    <nav class="navbar" th:insert="navbar.html"></nav>
     <main class="contenedor_main">
         <div class="contenedor_modal">
             <div class="title__add--modal">
@@ -115,7 +115,14 @@
             <div class="Cont__buscar">
                 <div class="buscar_search">
                     <label for="">Buscar :</label>
-                    <input type="text">
+                    <input type="text" id="productInput">
+                </div>
+                <div class="cont-reportes">
+                    <p>Generar reporte:</p>
+                    <div class="reporte-btns">
+                        <button class="btn-pdf"><i class="fa-solid fa-file-pdf"></i></button>
+                        <button class="btn-excel"><i class="fa-solid fa-file-excel"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="cont_table">
@@ -128,7 +135,7 @@
                             <th>Contraseña</th>
                             <th>Rol</th>
                         </tr>
-                        <tr th:each="usuario: ${usuarios}">
+                        <tr id="productList" th:each="usuario: ${usuarios}">
                             <td th:text="${usuario.idUsuario}">1</td>
                             <td th:text="${usuario.nombre}">Kenneth</td>
                             <td th:text="${usuario.email}">kenn</td>
@@ -203,7 +210,102 @@
         </div>
     </main>
     
-    <script src="modalAdd.js"></script>
-    <script src="general.js"></script>
+    <script th:src="@{/js/modalAdd.js}"></script>
+
+    <script>
+        const productInput = document.getElementById("productInput");
+        const tableRows = document.querySelectorAll("#productList");
+
+        function filterProducts() {
+            const query = productInput.value.toLowerCase();
+
+            tableRows.forEach(row => {
+                // Filtrar basándonos en las celdas relevantes (e.g., nombre del producto)
+                const productId = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
+                const productName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                const productEmail= row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+                const productRol  = row.querySelector("td:nth-child(5)").textContent.toLowerCase();
+                
+                if (productId.includes(query) || productName.includes(query) || productEmail.includes(query) || productRol.includes(query)) {
+                    row.style.display = ""; // Mostrar fila
+                } else {
+                    row.style.display = "none"; // Ocultar fila
+                }
+
+            });
+        }
+
+        // Asociar la función al evento de entrada
+        productInput.addEventListener("input", filterProducts);
+    </script>
+
+    <script>
+        document.querySelector('.btn-pdf').addEventListener('click', function () {
+            const filteredRows = Array.from(document.querySelectorAll("#productList"))
+                .filter(row => row.style.display !== "none") // Solo filas visibles
+                .map(row => {
+                    const cells = row.querySelectorAll("td");
+                    return {
+                        idUsuario: cells[0].textContent.trim(),
+                        nombre: cells[1].textContent.trim(),
+                        email: cells[2].textContent.trim(),
+                        rol: cells[4].textContent.trim()
+                    };
+                });
+
+            fetch('/reporteUsuarios-pdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(filteredRows),
+            })
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Reporte_Usuarios.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                })
+                .catch(error => console.error('Error al generar el PDF:', error));
+        });
+    </script>
+    <script>
+        document.querySelector('.btn-excel').addEventListener('click', function () {
+            const filteredRows = Array.from(document.querySelectorAll("#productList"))
+                .filter(row => row.style.display !== "none") // Solo filas visibles
+                .map(row => {
+                    const cells = row.querySelectorAll("td");
+                    return {
+                        idUsuario: cells[0].textContent.trim(),
+                        nombre: cells[1].textContent.trim(),
+                        email: cells[2].textContent.trim(),
+                        rol: cells[4].textContent.trim()
+                    };
+                });
+    
+            fetch('/excelUsuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(filteredRows)
+            })
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'reporte_usuarios.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                })
+                .catch(error => console.error('Error al generar el Excel:', error));
+        });
+    </script>
 </body>
 </html>

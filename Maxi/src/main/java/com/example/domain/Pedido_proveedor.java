@@ -11,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -31,6 +33,15 @@ public class Pedido_proveedor implements Serializable{
     @Column(name="c_ruc_proveedor")
     private int idProveedor;
 
-    @Column(name="c_producto")
-    private int idProducto;   
+    @Column(name="fecha_solicitud")
+    private Date fecha;   
+
+    @Column(name="n_monto_total")
+    private double total;   
+
+    @Column(name="n_descuento")
+    private int descuento;   
+
+    @Column(name="n_impuesto")
+    private int impuesto;   
 }

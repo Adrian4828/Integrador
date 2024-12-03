@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="iniciar_crear.css">
+        <title>Iniciar sesión</title>
+        <link rel="stylesheet" th:href="@{/css/iniciar_crear.css}">
     </head>
     <body>
         <div class="dos_columnas">
@@ -16,7 +16,7 @@
                     <header class="titulo">
                         <h1>Iniciar sesión</h1>
                     </header>
-                    <form class="contenido" action="/" method="post">
+                    <form class="contenido" th:action="@{/}" method="post">
                         <div class="campos">
                             <div class="campos">
                                 <label for="email">Código de empleado</label>
@@ -27,7 +27,7 @@
                             <div class="campos">
                                 <label for="contraseña">Contraseña</label>
                                 <br>
-                                <input type="password" id="contraseña" name="contraseña" required>
+                                <input type="password" id="password" name="password" required>
                             </div>
                             <div class="mensaje_error">*Campo obligatorio</div>
                         </div>  

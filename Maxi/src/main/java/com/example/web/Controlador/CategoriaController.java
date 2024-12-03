@@ -9,6 +9,7 @@ import com.example.web.Respositorios.CategoriaRepositorio;
 import com.example.web.Services.CategoriaService;
 
 @Controller
+@SessionAttributes({ "nombre", "id", "rol" })
 public class CategoriaController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class CategoriaController {
     @GetMapping("/categoria")
     public String listarCategorias(Model model) {
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "categoria";
+        return "/categoria";
     }
 
     @PostMapping("/agregar_cat")

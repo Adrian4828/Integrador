@@ -9,6 +9,7 @@ import com.example.web.Services.ProveedoresService;
 
 
 @Controller
+@SessionAttributes({ "nombre", "id", "rol" })
 public class ProveedorController {
 
     @Autowired
@@ -17,7 +18,7 @@ public class ProveedorController {
     @GetMapping("/proveedores")
     public String proveedores(Model model) {
         model.addAttribute("proveedores", proveedoresService.obtenerProveedores());
-        return "proveedores";
+        return "/proveedores";
     }
 
     @PostMapping("/agregar_prov")

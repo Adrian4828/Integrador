@@ -31,7 +31,7 @@ public class DetalleVenta implements Serializable {
     @Column(name="c_producto")
     private int idProducto;
 
-    @Column(name="n_cantidad_productos")
+    @Column(name="n_cantidad_producto")
     private int cantidadProductos;
 
     

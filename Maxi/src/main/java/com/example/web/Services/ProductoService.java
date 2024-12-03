@@ -1,5 +1,7 @@
 package com.example.web.Services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,5 +65,31 @@ public class ProductoService {
 
     public void eliminarProducto(int id) {
         productosDAO.deleteById(Long.valueOf(id));
+    }
+
+    
+
+    public void actualizarStocks(int id_producto, int cantidad){
+
+        Optional<Producto> producto = productosDAO.findById(Long.valueOf(id_producto));
+        int stock = producto.get().getStock();
+
+        productoRepositorio.actualizarStock(id_producto,stock - cantidad);
+    }
+
+    public void aumentarStocks(int id_producto, int cantidad){
+
+        Optional<Producto> producto = productosDAO.findById(Long.valueOf(id_producto));
+        int stock = producto.get().getStock();
+
+        productoRepositorio.actualizarStock(id_producto,stock + cantidad);
+    }
+
+    public Optional<Producto> obtenerProductoPorId(int id){
+        return productosDAO.findById(Long.valueOf(id));
+    }
+
+    public void guardarProducto(Producto producto) {
+        productosDAO.save(producto);
     }
 }

@@ -8,10 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import com.example.web.Services.ProductoService;
 
 @Controller
+@SessionAttributes({ "nombre", "id", "rol" })
 public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @GetMapping("/stock")
+    public String stock(Model model) {
+        model.addAttribute("categorias", productoService.obtenerCategorias());
+        model.addAttribute("productos", productoService.obtenerProductos());
+        model.addAttribute("proveedores", productoService.obtenerProveedores());
+        return "stock";
+    }
 
 
     @GetMapping("/productos")
@@ -19,7 +28,7 @@ public class ProductoController {
         model.addAttribute("categorias", productoService.obtenerCategorias());
         model.addAttribute("productos", productoService.obtenerProductos());
         model.addAttribute("proveedores", productoService.obtenerProveedores());
-        return "productos";
+        return "/productos";
     }
 
     @PostMapping("/agregar_prod")

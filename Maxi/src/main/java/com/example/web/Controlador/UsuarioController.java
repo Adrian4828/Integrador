@@ -6,11 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.web.Services.UsuarioService;
 
 
 @Controller
+@SessionAttributes({ "nombre", "id", "rol" })
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
@@ -19,7 +21,7 @@ public class UsuarioController {
     public String usuarios(Model model) {
 
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
-        return "usuarios";
+        return "/usuarios";
     }
 
     @PostMapping("/agregar_usu")

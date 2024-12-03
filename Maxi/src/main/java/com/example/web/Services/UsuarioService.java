@@ -1,6 +1,9 @@
 package com.example.web.Services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.Usuarios;
@@ -26,6 +29,11 @@ public class UsuarioService {
         return usuariosDAO.findByEmailAndContraseña(x_email, contraseña);
     }
 
+    public Optional<Usuarios> obtenerUsuarioPorId(int id) {
+        
+        return usuariosDAO.findById(Long.valueOf(id));
+    }
+
     public Usuarios obtenerUsuarioPorEmailContraseñaEncriptada(String x_email, String contraseña){
         Usuarios usuario = usuariosDAO.findByEmail(x_email);
         boolean verificar = Password.check(contraseña, usuario.getContraseña()).addSalt("@#").withPBKDF2();
@@ -42,9 +50,8 @@ public class UsuarioService {
             String nombre,
             String contraseña) {
 
-        Hash hash = Password.hash(contraseña).addSalt("@#").withPBKDF2();
 
-        usuarioRepositorio.insertarUsu(rol, email, nombre, hash.getResult());
+        usuarioRepositorio.insertarUsu(rol, email, nombre, new BCryptPasswordEncoder().encode(contraseña));
 
     }
 
@@ -53,13 +60,17 @@ public class UsuarioService {
             String nombre,
             String contraseña, int id_usuario) {
 
-        Hash hash = Password.hash(contraseña).addSalt("@#").withPBKDF2();
 
-        usuarioRepositorio.actualizarUsu(rol, email, nombre, hash.getResult(), id_usuario);
+        usuarioRepositorio.actualizarUsu(rol, email, nombre, new BCryptPasswordEncoder().encode(contraseña), id_usuario);
 
     }
 
     public void eliminarUsuario(int id) {
         usuariosDAO.deleteById(Long.valueOf(id));
+    }
+
+    public Usuarios obtenerUsuarioPorCorreo(String email){
+        Usuarios usuario = usuariosDAO.findByEmail(email);
+        return usuario;
     }
 }

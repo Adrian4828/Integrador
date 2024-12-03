@@ -24,4 +24,9 @@ public class ProductoRepositorio {
         String sql = "UPDATE sgi_producto_tb SET c_id_categoria = ?, c_ruc_proveedor = ?, x_descripcion_prod = ?, x_nombre_prod = ?, n_precio_venta = ?, n_stock = ?  WHERE c_producto = ?";
         jdbcTemplate.update(sql, id_categoria, ruc_proveedor, descripcion, nombre, precio, stock, id_producto);
     }
+
+    public void actualizarStock(int id, int cantidad){
+        String sql = "UPDATE sgi_producto_tb SET n_stock = ? WHERE c_producto = ?";
+        jdbcTemplate.update(sql, cantidad, id);
+    }
 }

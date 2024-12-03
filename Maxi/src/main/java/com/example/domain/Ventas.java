@@ -23,7 +23,7 @@ public class Ventas implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="c_venta")
+    @Column(name="c_ventas")
     private int idVventa;
     
     @Column(name="c_usuario")
@@ -33,7 +33,7 @@ public class Ventas implements Serializable{
     private Date fechaVenta;
 
     @Column(name="n_total_venta")
-    private double total_venta;
+    private double total;
     
 
     
