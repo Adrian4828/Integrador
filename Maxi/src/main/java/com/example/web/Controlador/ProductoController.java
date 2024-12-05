@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.web.Services.ProductoService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @SessionAttributes({ "nombre", "id", "rol" })
 public class ProductoController {
 
@@ -28,7 +31,7 @@ public class ProductoController {
         model.addAttribute("categorias", productoService.obtenerCategorias());
         model.addAttribute("productos", productoService.obtenerProductos());
         model.addAttribute("proveedores", productoService.obtenerProveedores());
-        return "/productos";
+        return "productos";
     }
 
     @PostMapping("/agregar_prod")

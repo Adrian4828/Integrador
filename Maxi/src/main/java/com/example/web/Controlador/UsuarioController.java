@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.web.Services.UsuarioService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 @SessionAttributes({ "nombre", "id", "rol" })
 public class UsuarioController {
     @Autowired
@@ -21,7 +24,7 @@ public class UsuarioController {
     public String usuarios(Model model) {
 
         model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
-        return "/usuarios";
+        return "usuarios";
     }
 
     @PostMapping("/agregar_usu")

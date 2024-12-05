@@ -110,8 +110,10 @@
 
         <script>
             let date = document.querySelector(".date-input");
-            date.addEventListener("input", function () {
-                document.getElementById("form_fecha").submit();
+            date.addEventListener("change", function () {
+                if (date.value) {
+                    document.getElementById("form_fecha").submit();
+                }
             });
 
 

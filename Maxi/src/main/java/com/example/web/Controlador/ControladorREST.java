@@ -113,7 +113,7 @@ public class ControladorREST {
             model.addAttribute("producto" + conta, producto.get("n_cantidad_producto"));
             conta++;
         }
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/dashboard")

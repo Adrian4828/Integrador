@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import com.example.web.Respositorios.CategoriaRepositorio;
 import com.example.web.Services.CategoriaService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @SessionAttributes({ "nombre", "id", "rol" })
 public class CategoriaController {
 
@@ -20,7 +23,7 @@ public class CategoriaController {
     @GetMapping("/categoria")
     public String listarCategorias(Model model) {
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "/categoria";
+        return "categoria";
     }
 
     @PostMapping("/agregar_cat")

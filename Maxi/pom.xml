@@ -11,6 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>HolaMundoConSpringData</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
     <name>Maxi</name>
     <description>Hola Mundo con Spring Boot</description>
     <url/>
@@ -45,6 +46,12 @@
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
             <version>5.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
  

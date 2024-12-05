@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.web.Services.ProveedoresService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 @SessionAttributes({ "nombre", "id", "rol" })
 public class ProveedorController {
 
@@ -18,7 +21,7 @@ public class ProveedorController {
     @GetMapping("/proveedores")
     public String proveedores(Model model) {
         model.addAttribute("proveedores", proveedoresService.obtenerProveedores());
-        return "/proveedores";
+        return "proveedores";
     }
 
     @PostMapping("/agregar_prov")
